@@ -20,20 +20,39 @@ export default function PokemonList() {
 
   return (
     <Container>
-      <Typography variant="h4">Lista de Pokémon</Typography>
-      <Grid container spacing={3}>
-        {pokemonList.map(pokemon => (
+      <Typography variant="h4" align="center" marginTop={3}>
+        Lista de Pokémon
+      </Typography>
+      <Grid container spacing={3} justifyContent="center">
+        {pokemonList.map((pokemon) => (
           <Grid item xs={12} sm={6} md={4} key={pokemon.name}>
             <Link to={`/pokemon/${pokemon.name}`} style={{ textDecoration: 'none' }}>
               <Card>
-                <CardMedia
-                  component="img"
-                  height="140"
-                  image={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.url.split('/')[6]}.png`}
-                  alt={pokemon.name}
-                />
+                {/* Div para centrar la imagen */}
+                <div
+                  style={{
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    height: '140px',
+                    backgroundColor: '#f5f5f5',
+                  }}
+                >
+                  <CardMedia
+                    component="img"
+                    height="100"
+                    image={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.url.split('/')[6]}.png`}
+                    alt={pokemon.name}
+                    style={{
+                      objectFit: 'contain',
+                      maxWidth: '100px',
+                    }}
+                  />
+                </div>
                 <CardContent>
-                  <Typography variant="h5">{pokemon.name}</Typography>
+                  <Typography variant="h5" align="center" style={{ textTransform: 'capitalize' }}>
+                    {pokemon.name}
+                  </Typography>
                 </CardContent>
               </Card>
             </Link>
